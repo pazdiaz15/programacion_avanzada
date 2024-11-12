@@ -6,7 +6,6 @@ pipeline {
         stage('Correr Trivia - Python') {
             steps {
                 dir('trivia/src') {
-                    bat 'python3 -m pip install -r requirements.txt'
                     echo 'Building trivia...'
                     bat 'python3 -m pydoc -w trivia'
                     bat 'ls -l'
@@ -17,7 +16,6 @@ pipeline {
          stage('Correr USQL - Python') {
             steps {
                 dir('traductor_usql/src') {
-                    bat 'python3 -m pip install -r requirements.txt'
                     echo 'Building USQL...'
                     bat 'python3 -m pydoc -w traductor'
                     bat 'ls -l'
