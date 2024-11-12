@@ -6,39 +6,25 @@ pipeline {
                 git url: 'https://github.com/pazdiaz15/programacion_avanzada.git', branch: 'main'
             }
         }
-        // stage('Javadoc Sistema Pedidos') {
-        //     when { expression { params.ETAPA == 'javadoc_sistema_pedidos' } }
-        //     steps {
-        //         dir('sistema_pedidos/src/main/java/classes') {
-        //             sh 'javadoc -d ../../../javadoc Main.java'
-        //             sh 'ls -l'
-        //         }
-        //     }
-        // }
-        
+     
         stage('PyDoc Traductor USQL') {
             steps {
-                    // sh 'cd traductor_usql/src'
                     sh 'python3 -m pydoc -w traductor_usql/src/traductor'
                     sh 'ls -l'
                 }
             }
         
-        // stage('PyDoc Trivia') {
-        //     when { expression { params.ETAPA == 'pydoc_trivia' } }
-        //     steps {
-        //         dir('trivia/src') {
-        //             sh 'pydoc -w trivia'
-        //             sh 'ls -l'
-        //         }
-        //     }
-        // }
+        stage('PyDoc Trivia') {
+             steps {
+                     sh 'python3 -m pydoc -w trivia/src/trivia'
+                     sh 'ls -l'
+                 }
+         }
 
         stage('Archive') {
             steps {
-                // archiveArtifacts allowEmptyArchive: true, artifacts: 'trivia/src/trivia.html'
+                archiveArtifacts allowEmptyArchive: true, artifacts: 'trivia/src/trivia.html'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'traductor_usql/src/traductor.html'
-                // archiveArtifacts allowEmptyArchive: true, artifacts: 'sistema_pedidos/src/java/docs/Main.html'
             }
         }
     }
