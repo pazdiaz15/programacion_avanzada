@@ -107,16 +107,11 @@ lexer = lex.lex()
 #parser
 def p_statement(p):
     """Define el tipo de declaraciones que puede manejar el parser."""
-    '''statement : statement_select
-                | statement_insert
-                | statement_update 
-                | statement_delete
-                | statement_alter'''
     p[0] = p[1]
+
 
 def p_statement_select(p):
     """Maneja las consultas tipo SELECT."""
-    '''statement_select : TRAEME select_items DE LA TABLA table join_clause group_by_clause having_clause where_clause'''
     
     clauses = [
         generate_select(p[2]),
@@ -155,9 +150,6 @@ def generate_where(where_clause):
 
 def p_select_items(p):
     """Define los elementos seleccionados en una consulta SELECT."""
-    '''select_items : TODO
-                    | LOS DISTINTOS column_list
-                    | CONTANDO PARENTESIS_IZQ TODO PARENTESIS_DER'''
     if len(p) == 2:
         if p[1] == 'TODO':
             p[0] = '*' 
@@ -170,8 +162,6 @@ def p_select_items(p):
 
 def p_column(p):
     """Define una columna con o sin un prefijo de tabla."""
-    '''column : IDENTIFICADOR PUNTO IDENTIFICADOR
-              | IDENTIFICADOR'''
     if len(p) == 4:
         p[0] = f"{p[1]}.{p[3]}"
     else:
@@ -179,8 +169,6 @@ def p_column(p):
 
 def p_column_list(p):
     """Define una lista de columnas."""
-    '''column_list : IDENTIFICADOR
-                   | column_list COMA IDENTIFICADOR'''
     if len(p) == 2:
         p[0] = p[1]
     else:
@@ -188,8 +176,6 @@ def p_column_list(p):
 
 def p_join_clause(p):
     """Define las cláusulas JOIN en las consultas."""
-    '''join_clause : MEZCLANDO IDENTIFICADOR EN column IGUAL column
-                   | empty'''
     if len(p) == 7:
         p[0] = f"JOIN {p[2]} ON {p[4]} = {p[6]}"
     else:
@@ -197,8 +183,6 @@ def p_join_clause(p):
 
 def p_where_clause(p):
     """Define la cláusula WHERE en las consultas."""
-    '''where_clause : DONDE condition
-                    | empty'''
     if len(p) == 3:
         p[0] = f"WHERE {p[2]}"
     else:
@@ -206,8 +190,6 @@ def p_where_clause(p):
 
 def p_having_clause(p):
     """Define la cláusula HAVING en las consultas."""
-    '''having_clause : WHERE DEL GROUP BY condition
-                     | empty'''
     if len(p) == 6:
         p[0] = f"HAVING {p[5]}"
     else:
@@ -215,8 +197,6 @@ def p_having_clause(p):
 
 def p_value(p):
     """Define un valor numérico o de cadena."""
-    '''value : CADENA
-             | NUMERO'''
     if isinstance(p[1], str):
         p[0] = p[1]  
     else:
@@ -224,8 +204,6 @@ def p_value(p):
 
 def p_value_list(p):
     """Define una lista de valores."""
-    '''value_list : value
-                  | value_list COMA value'''
     if len(p) == 2:
         if isinstance(p[1], str): 
             p[0] = f"'{p[1]}'"
@@ -239,7 +217,6 @@ def p_value_list(p):
 
 def p_statement_update(p):
     """Maneja las consultas tipo UPDATE."""
-    '''statement_update : ACTUALIZA IDENTIFICADOR SETEA IDENTIFICADOR IGUAL value where_clause'''
     if isinstance(p[6], str):  
         p[0] = f"UPDATE {p[2]} SET {p[4]} = '{p[6]}' {p[7]}"
     else:
@@ -247,11 +224,6 @@ def p_statement_update(p):
 
 def p_condition(p):
     """Define las condiciones de la cláusula WHERE y HAVING."""
-    '''condition : column MAYOR value
-                 | column IGUAL value
-                 | column MENOR value
-                 | column ENTRE value Y value
-                 | CONTANDO PARENTESIS_IZQ TODO PARENTESIS_DER MAYOR value'''
     if len(p) == 4:
         if isinstance(p[3], str):  
             p[0] = f"{p[1]} {p[2]} '{p[3]}'"
@@ -264,18 +236,14 @@ def p_condition(p):
 
 def p_statement_delete(p):
     """Define una declaración DELETE."""
-    '''statement_delete : BORRA DE IDENTIFICADOR where_clause '''
     p[0] = f"DELETE FROM {p[3]} {p[4]}"
 
 def p_statement_alter(p):
     """Define una declaración ALTER TABLE para modificar tablas."""
-    '''statement_alter : CAMBIA LA TABLA IDENTIFICADOR alter_action'''
     p[0] = f"ALTER TABLE {p[4]} {p[5]}"
 
 def p_alter_action(p):
     """Define las acciones ALTER, como agregar o eliminar columnas."""
-    '''alter_action : AGREGA LA COLUMNA IDENTIFICADOR data_type NO NULO
-                    | ELIMINA LA COLUMNA IDENTIFICADOR'''
     if len(p) == 8:
         p[0] = f"ADD COLUMN {p[4]} {p[5]} NOT NULL"
     else:
@@ -283,8 +251,6 @@ def p_alter_action(p):
 
 def p_data_type(p):
     """Define un tipo de dato con o sin especificación de tamaño."""
-    '''data_type : IDENTIFICADOR PARENTESIS_IZQ NUMERO PARENTESIS_DER
-                 | IDENTIFICADOR'''
     if len(p) == 5:
         p[0] = f"{p[1]}({p[3]})"
     else:
@@ -292,8 +258,6 @@ def p_data_type(p):
 
 def p_group_by_clause(p):
     """Define la cláusula GROUP BY."""
-    '''group_by_clause : AGRUPANDO POR column
-                       | empty'''
     if len(p) == 4:
         p[0] = f"GROUP BY {p[3]}"
     else:
@@ -301,17 +265,14 @@ def p_group_by_clause(p):
 
 def p_table(p):
     """Define el nombre de la tabla."""
-    '''table : IDENTIFICADOR'''
     p[0] = p[1]
 
 def p_statement_insert(p):
     """Define una declaración INSERT. """
-    '''statement_insert : METE EN IDENTIFICADOR PARENTESIS_IZQ column_list PARENTESIS_DER VALORES PARENTESIS_IZQ value_list PARENTESIS_DER'''
     p[0] = f"INSERT INTO {p[3]} ({p[5]}) VALUES ({p[9]})"
 
 def p_empty(p):
     """Define una producción vacía."""
-    '''empty :'''
     pass
 
 def p_error(p):
