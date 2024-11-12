@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    parameters {
-        string(name: 'ETAPA', defaultValue: '', description: 'Especifica qué etapa ejecutar')
-    }
     stages {
         // stage('Javadoc Sistema Pedidos') {
         //     when { expression { params.ETAPA == 'javadoc_sistema_pedidos' } }
