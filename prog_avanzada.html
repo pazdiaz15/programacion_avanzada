@@ -33,12 +33,12 @@
     <p>Seleccione una opción para generar su documentación:</p>
 
     <!-- Botón para ejecutar Javadoc en Sistema Pedidos -->
-    <button class="javadoc-btn" onclick="runPipeline('JENKINS_URL/job/proyecto_final/buildWithParameters?ETAPA=javadoc_sistema_pedidos')">
+    <button class="javadoc-btn" onclick="runPipeline('http://localhost:8080/job/obligPA/job/main/${build.number}/artifact/sistema_pedidos/src/java/docs/Main.html')">
         Generar Javadoc para Sistema Pedidos
     </button>
 
     <!-- Botón para ejecutar PyDoc en Traductor USQL -->
-    <button class="pydoc-btn" onclick="runPipeline('JENKINS_URL/job/proyecto_final/buildWithParameters?ETAPA=pydoc_traductor_usql')">
+    <button class="pydoc-btn" onclick="runPipeline('http://localhost:8080/job/obligPA/job/main/${build.number}/artifact/traductor_usql/src/main.html')">
         Generar PyDoc para Traductor USQL
     </button>
 
