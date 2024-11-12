@@ -29,6 +29,8 @@ pipeline {
                 dir('sistema_pedidos/src/main/java') {
                     // Compilar los archivos Java en `classes`
                     bat 'javac -d . classes/*.java'
+                    // Crear documentación Javadoc en la carpeta `docs`
+                    bat 'javadoc -d docs classes/*.java'
                     // Ejecutar la clase `Main` con el nombre de paquete completo
                     bat 'java classes.Main'
                 }
@@ -39,11 +41,11 @@ pipeline {
             steps {
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'trivia/src/trivia.html'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'traductor_usql/src/traductor.html'
-                archiveArtifacts allowEmptyArchive: true, artifacts: 'sistema_pedidos/main/java/classes/docs/Main.html'
-                archiveArtifacts allowEmptyArchive: true, artifacts: 'sistema_pedidos/main/java/classes/docs/*'
+                archiveArtifacts allowEmptyArchive: true, artifacts: 'sistema_pedidos/src/main/java/docs/*'
             }
         }
         
     }
 }
+
 
