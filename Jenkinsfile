@@ -39,7 +39,7 @@ pipeline {
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'trivia/src/trivia.html'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'traductor_usql/src/main.html'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'sistema_pedidos/src/java/docs/Main.html'
-            }
-        }
+            }
+        }
     }
 }
