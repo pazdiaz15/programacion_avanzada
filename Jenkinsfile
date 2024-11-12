@@ -1,9 +1,11 @@
 pipeline {
     agent any
-    parameters {
-        string(name: 'ETAPA', defaultValue: '', description: 'Especifica qué etapa ejecutar')
-    }
     stages {
+        stage('Clonar Repositorio') {
+            steps {
+                git url: 'https://github.com/pazdiaz15/programacion_avanzada.git', branch: 'main'
+            }
+        }
         // stage('Javadoc Sistema Pedidos') {
         //     when { expression { params.ETAPA == 'javadoc_sistema_pedidos' } }
         //     steps {
