@@ -1,0 +1,62 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                // Clonar el repositorio completo con los tres proyectos
+                git 'URL_DEL_REPOSITORIO'
+            }
+        }
+
+        stage('Build Sistema Pedidos (Java)') {
+            steps {
+                dir('sistema_pedidos/src/main/java/classes') {
+                    // Compilar el código Java
+                    sh 'javac *.java'
+                }
+            }
+        }
+
+        stage('Generate Javadoc for Sistema Pedidos') {
+            steps {
+                dir('sistema_pedidos/src/main/java/classes') {
+                    // Generar la documentación Javadoc
+                    sh 'javadoc -d ../../../javadoc Main.java'
+                }
+            }
+            post {
+                success {
+                    archiveArtifacts artifacts: 'sistema_pedidos/javadoc/**', allowEmptyArchive: true
+                }
+            }
+        }
+
+        stage('Run PyDoc for Traductor USQL') {
+            steps {
+                dir('traductor_usql/src') {
+                    // Generar la documentación Pydoc
+                    sh 'pydoc -w main'
+                }
+            }
+            post {
+                success {
+                    archiveArtifacts artifacts: 'traductor_usql/src/*.html', allowEmptyArchive: true
+                }
+            }
+        }
+
+        stage('Run PyDoc for Trivia') {
+            steps {
+                dir('trivia/src') {
+                    // Generar la documentación Pydoc
+                    sh 'pydoc -w trivia'
+                }
+            }
+            post {
+                success {
+                    archiveArtifacts artifacts: 'trivia/src/*.html', allowEmptyArchive: true
+                }
+            }
+        }
+    }
+}
