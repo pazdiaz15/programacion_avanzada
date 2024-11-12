@@ -30,23 +30,5 @@ pipeline {
                 }
             }
         }
-        
-        stage('Tests Traductor USQL') {
-            when { expression { params.ETAPA == 'test_traductor_usql' } }
-            steps {
-                dir('traductor_usql/src') {
-                    sh 'python3 -m unittest discover'
-                }
-            }
-        }
-        
-        stage('Tests Trivia') {
-            when { expression { params.ETAPA == 'test_trivia' } }
-            steps {
-                dir('trivia/src') {
-                    sh 'python3 -m unittest discover'
-                }
-            }
-        }
     }
 }

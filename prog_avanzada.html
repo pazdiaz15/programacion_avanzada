@@ -33,17 +33,17 @@
     <p>Seleccione una opción para generar su documentación:</p>
 
     <!-- Botón para ejecutar Javadoc en Sistema Pedidos -->
-    <button class="javadoc-btn" onclick="runPipeline('JENKINS_URL/job/NOMBRE_DEL_PIPELINE/buildWithParameters?ETAPA=javadoc_sistema_pedidos')">
+    <button class="javadoc-btn" onclick="runPipeline('JENKINS_URL/job/programacion%20avanzada/buildWithParameters?ETAPA=javadoc_sistema_pedidos')">
         Generar Javadoc para Sistema Pedidos
     </button>
 
     <!-- Botón para ejecutar PyDoc en Traductor USQL -->
-    <button class="pydoc-btn" onclick="runPipeline('JENKINS_URL/job/NOMBRE_DEL_PIPELINE/buildWithParameters?ETAPA=pydoc_traductor_usql')">
+    <button class="pydoc-btn" onclick="runPipeline('JENKINS_URL/job/programacion%20avanzada/buildWithParameters?ETAPA=pydoc_traductor_usql')">
         Generar PyDoc para Traductor USQL
     </button>
 
     <!-- Botón para ejecutar PyDoc en Trivia -->
-    <button class="pydoc-btn" onclick="runPipeline('JENKINS_URL/job/NOMBRE_DEL_PIPELINE/buildWithParameters?ETAPA=pydoc_trivia')">
+    <button class="pydoc-btn" onclick="runPipeline('JENKINS_URL/job/programacion%20avanzada/buildWithParameters?ETAPA=pydoc_trivia')">
         Generar PyDoc para Trivia
     </button>
 
@@ -52,7 +52,7 @@
             fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Authorization': 'Basic ' + btoa('USUARIO:TOKEN')  // Reemplaza USUARIO:TOKEN con tus credenciales
+                    'Authorization': 'Basic ' + btoa('cberreta:11f00a9fa12be0414b711ba486ec64c803')  
                 }
             })
             .then(response => {
