@@ -26,9 +26,9 @@ pipeline {
         stage('Correr Pedidos - Java') {
             steps {
                 echo 'Building sistema pedidos...'
-                dir('sistema_pedidos/src/main/java/classes') {
-                    bat 'javac *.java'
-                    bat 'java Main'
+                dir('sistema_pedidos/src/main/java') {
+                    bat 'javac classes/*.java'
+                    bat 'java classes.Main'
                     bat 'javadoc -d docs Main.java'
                     bat 'dir'
                 }
