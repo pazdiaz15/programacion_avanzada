@@ -43,7 +43,7 @@
     </button>
 
     <!-- Botón para ejecutar PyDoc en Trivia -->
-    <button class="pydoc-btn" onclick="runPipeline('JENKINS_URL/job/proyecto_final/buildWithParameters?ETAPA=pydoc_trivia')">
+    <button class="pydoc-btn" onclick="runPipeline('http://localhost:8085/job/proyecto_final/job/main/${build.number}/artifact/trivia/src/trivia.html')">
         Generar PyDoc para Trivia
     </button>
 
