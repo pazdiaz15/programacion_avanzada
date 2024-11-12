@@ -6,10 +6,10 @@ pipeline {
         stage('Correr Trivia - Python') {
             steps {
                 dir('trivia/src') {
-                    sh 'python3 -m pip install -r requirements.txt'
+                    bat 'python3 -m pip install -r requirements.txt'
                     echo 'Building trivia...'
-                    sh 'python3 -m pydoc -w trivia'
-                    sh 'ls -l'
+                    bat 'python3 -m pydoc -w trivia'
+                    bat 'ls -l'
                 }    
             }
         }
@@ -17,10 +17,10 @@ pipeline {
          stage('Correr USQL - Python') {
             steps {
                 dir('traductor_usql/src') {
-                    sh 'python3 -m pip install -r requirements.txt'
+                    bat 'python3 -m pip install -r requirements.txt'
                     echo 'Building USQL...'
-                    sh 'python3 -m pydoc -w traductor'
-                    sh 'ls -l'
+                    bat 'python3 -m pydoc -w traductor'
+                    bat 'ls -l'
                 }    
             }
         }
@@ -29,11 +29,11 @@ pipeline {
             steps {
                 echo 'Building...'
                 dir('sistema_pedidos/main/java/classes') {
-                    sh 'javac Order.java OrderProcessing.java Packaging.java Payment.java Shipping.java'
-                    sh 'javac Main.java'
-                    sh 'java Main'
-                    sh 'javadoc -d docs Main.java'
-                    sh 'ls -l'
+                    bat 'javac Order.java OrderProcessing.java Packaging.java Payment.java Shipping.java'
+                    bat 'javac Main.java'
+                    bat 'java Main'
+                    bat 'javadoc -d docs Main.java'
+                    bat 'ls -l'
                 }
             }
         }
