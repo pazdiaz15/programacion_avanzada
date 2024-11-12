@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module traductor</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">traductor</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Ccamib%5Cdocuments%5Cgithub%5Cprogramacion_avanzada%5Ctraductor_usql%5Csrc%5Ctraductor.py">c:\users\camib\documents\github\programacion_avanzada\traductor_usql\src\traductor.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="ply.lex.html">ply.lex</a><br>
+</td><td class="multicolumn"><a href="ply.yacc.html">ply.yacc</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-generate_from"><strong>generate_from</strong></a>(table)</dt><dd><span class="code">Genera&nbsp;la&nbsp;cláusula&nbsp;FROM&nbsp;de&nbsp;una&nbsp;consulta&nbsp;SQL.</span></dd></dl>
+ <dl><dt><a name="-generate_group_by"><strong>generate_group_by</strong></a>(group_by_clause)</dt><dd><span class="code">Genera&nbsp;la&nbsp;cláusula&nbsp;GROUP&nbsp;BY&nbsp;si&nbsp;está&nbsp;presente.</span></dd></dl>
+ <dl><dt><a name="-generate_having"><strong>generate_having</strong></a>(having_clause)</dt><dd><span class="code">Genera&nbsp;la&nbsp;cláusula&nbsp;HAVING&nbsp;si&nbsp;está&nbsp;presente.</span></dd></dl>
+ <dl><dt><a name="-generate_join"><strong>generate_join</strong></a>(join_clause)</dt><dd><span class="code">Genera&nbsp;la&nbsp;cláusula&nbsp;JOIN&nbsp;si&nbsp;está&nbsp;presente.</span></dd></dl>
+ <dl><dt><a name="-generate_select"><strong>generate_select</strong></a>(select_items)</dt><dd><span class="code">Genera&nbsp;la&nbsp;cláusula&nbsp;SELECT&nbsp;de&nbsp;una&nbsp;consulta&nbsp;SQL.</span></dd></dl>
+ <dl><dt><a name="-generate_where"><strong>generate_where</strong></a>(where_clause)</dt><dd><span class="code">Genera&nbsp;la&nbsp;cláusula&nbsp;WHERE&nbsp;si&nbsp;está&nbsp;presente.</span></dd></dl>
+ <dl><dt><a name="-p_alter_action"><strong>p_alter_action</strong></a>(p)</dt><dd><span class="code">Define&nbsp;las&nbsp;acciones&nbsp;ALTER,&nbsp;como&nbsp;agregar&nbsp;o&nbsp;eliminar&nbsp;columnas.</span></dd></dl>
+ <dl><dt><a name="-p_column"><strong>p_column</strong></a>(p)</dt><dd><span class="code">Define&nbsp;una&nbsp;columna&nbsp;con&nbsp;o&nbsp;sin&nbsp;un&nbsp;prefijo&nbsp;de&nbsp;tabla.</span></dd></dl>
+ <dl><dt><a name="-p_column_list"><strong>p_column_list</strong></a>(p)</dt><dd><span class="code">Define&nbsp;una&nbsp;lista&nbsp;de&nbsp;columnas.</span></dd></dl>
+ <dl><dt><a name="-p_condition"><strong>p_condition</strong></a>(p)</dt><dd><span class="code">Define&nbsp;las&nbsp;condiciones&nbsp;de&nbsp;la&nbsp;cláusula&nbsp;WHERE&nbsp;y&nbsp;HAVING.</span></dd></dl>
+ <dl><dt><a name="-p_data_type"><strong>p_data_type</strong></a>(p)</dt><dd><span class="code">Define&nbsp;un&nbsp;tipo&nbsp;de&nbsp;dato&nbsp;con&nbsp;o&nbsp;sin&nbsp;especificación&nbsp;de&nbsp;tamaño.</span></dd></dl>
+ <dl><dt><a name="-p_empty"><strong>p_empty</strong></a>(p)</dt><dd><span class="code">Define&nbsp;una&nbsp;producción&nbsp;vacía.</span></dd></dl>
+ <dl><dt><a name="-p_error"><strong>p_error</strong></a>(p)</dt><dd><span class="code">Maneja&nbsp;errores&nbsp;de&nbsp;sintaxis.</span></dd></dl>
+ <dl><dt><a name="-p_group_by_clause"><strong>p_group_by_clause</strong></a>(p)</dt><dd><span class="code">Define&nbsp;la&nbsp;cláusula&nbsp;GROUP&nbsp;BY.</span></dd></dl>
+ <dl><dt><a name="-p_having_clause"><strong>p_having_clause</strong></a>(p)</dt><dd><span class="code">Define&nbsp;la&nbsp;cláusula&nbsp;HAVING&nbsp;en&nbsp;las&nbsp;consultas.</span></dd></dl>
+ <dl><dt><a name="-p_join_clause"><strong>p_join_clause</strong></a>(p)</dt><dd><span class="code">Define&nbsp;las&nbsp;cláusulas&nbsp;JOIN&nbsp;en&nbsp;las&nbsp;consultas.</span></dd></dl>
+ <dl><dt><a name="-p_select_items"><strong>p_select_items</strong></a>(p)</dt><dd><span class="code">Define&nbsp;los&nbsp;elementos&nbsp;seleccionados&nbsp;en&nbsp;una&nbsp;consulta&nbsp;SELECT.</span></dd></dl>
+ <dl><dt><a name="-p_statement"><strong>p_statement</strong></a>(p)</dt><dd><span class="code">Define&nbsp;el&nbsp;tipo&nbsp;de&nbsp;declaraciones&nbsp;que&nbsp;puede&nbsp;manejar&nbsp;el&nbsp;parser.</span></dd></dl>
+ <dl><dt><a name="-p_statement_alter"><strong>p_statement_alter</strong></a>(p)</dt><dd><span class="code">Define&nbsp;una&nbsp;declaración&nbsp;ALTER&nbsp;TABLE&nbsp;para&nbsp;modificar&nbsp;tablas.</span></dd></dl>
+ <dl><dt><a name="-p_statement_delete"><strong>p_statement_delete</strong></a>(p)</dt><dd><span class="code">Define&nbsp;una&nbsp;declaración&nbsp;DELETE.</span></dd></dl>
+ <dl><dt><a name="-p_statement_insert"><strong>p_statement_insert</strong></a>(p)</dt><dd><span class="code">Define&nbsp;una&nbsp;declaración&nbsp;INSERT.</span></dd></dl>
+ <dl><dt><a name="-p_statement_select"><strong>p_statement_select</strong></a>(p)</dt><dd><span class="code">Maneja&nbsp;las&nbsp;consultas&nbsp;tipo&nbsp;SELECT.</span></dd></dl>
+ <dl><dt><a name="-p_statement_update"><strong>p_statement_update</strong></a>(p)</dt><dd><span class="code">Maneja&nbsp;las&nbsp;consultas&nbsp;tipo&nbsp;UPDATE.</span></dd></dl>
+ <dl><dt><a name="-p_table"><strong>p_table</strong></a>(p)</dt><dd><span class="code">Define&nbsp;el&nbsp;nombre&nbsp;de&nbsp;la&nbsp;tabla.</span></dd></dl>
+ <dl><dt><a name="-p_value"><strong>p_value</strong></a>(p)</dt><dd><span class="code">Define&nbsp;un&nbsp;valor&nbsp;numérico&nbsp;o&nbsp;de&nbsp;cadena.</span></dd></dl>
+ <dl><dt><a name="-p_value_list"><strong>p_value_list</strong></a>(p)</dt><dd><span class="code">Define&nbsp;una&nbsp;lista&nbsp;de&nbsp;valores.</span></dd></dl>
+ <dl><dt><a name="-p_where_clause"><strong>p_where_clause</strong></a>(p)</dt><dd><span class="code">Define&nbsp;la&nbsp;cláusula&nbsp;WHERE&nbsp;en&nbsp;las&nbsp;consultas.</span></dd></dl>
+ <dl><dt><a name="-t_CADENA"><strong>t_CADENA</strong></a>(t)</dt><dd><span class="code">Reconoce&nbsp;cadenas&nbsp;de&nbsp;texto&nbsp;entre&nbsp;comillas&nbsp;simples.</span></dd></dl>
+ <dl><dt><a name="-t_IDENTIFICADOR"><strong>t_IDENTIFICADOR</strong></a>(t)</dt><dd><span class="code">Reconoce&nbsp;nombres&nbsp;de&nbsp;tablas,&nbsp;columnas&nbsp;y&nbsp;otros&nbsp;identificadores.</span></dd></dl>
+ <dl><dt><a name="-t_NUMERO"><strong>t_NUMERO</strong></a>(t)</dt><dd><span class="code">Reconoce&nbsp;números&nbsp;enteros.</span></dd></dl>
+ <dl><dt><a name="-t_error"><strong>t_error</strong></a>(t)</dt><dd><span class="code">Muestra&nbsp;un&nbsp;error&nbsp;en&nbsp;caso&nbsp;de&nbsp;caracteres&nbsp;ilegales.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>keywords</strong> = {'A': 'A', 'ACTUALIZA': 'ACTUALIZA', 'AGREGA': 'AGREGA', 'AGRUPANDO': 'AGRUPANDO', 'BORRA': 'BORRA', 'BY': 'BY', 'CADENA': 'CADENA', 'CAMBIA': 'CAMBIA', 'CLAVE': 'CLAVE', 'COLUMNA': 'COLUMNA', ...}<br>
+<strong>lexer</strong> = &lt;ply.lex.Lexer object&gt;<br>
+<strong>t_COMA</strong> = ','<br>
+<strong>t_IGUAL</strong> = '='<br>
+<strong>t_MAYOR</strong> = '&gt;'<br>
+<strong>t_MENOR</strong> = '&lt;'<br>
+<strong>t_PARENTESIS_DER</strong> = r'\)'<br>
+<strong>t_PARENTESIS_IZQ</strong> = r'\('<br>
+<strong>t_PUNTO</strong> = r'\.'<br>
+<strong>t_TYPE</strong> = '(INT|VARCHAR|DATE|CHAR)'<br>
+<strong>t_Y</strong> = 'Y'<br>
+<strong>t_ignore</strong> = ' <span class="repr">\t\n</span>'<br>
+<strong>tokens</strong> = ('TRAEME', 'TODO', 'DE', 'LA', 'TABLA', 'DONDE', 'AGRUPANDO', 'POR', 'MEZCLANDO', 'EN', 'LOS', 'DISTINTOS', 'CONTANDO', 'METE', 'VALORES', 'ACTUALIZA', 'SETEA', 'BORRA', 'ORDENA', 'COMO', ...)</td></tr></table>
+</body></html>
