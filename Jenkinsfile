@@ -8,7 +8,7 @@ pipeline {
                 dir('trivia/src') {
                     echo 'Building trivia...'
                     bat 'python3 -m pydoc -w trivia'
-                    bat 'ls -l'
+                    bat 'dir' // Reemplazar 'ls -l' con 'dir'
                 }    
             }
         }
@@ -18,7 +18,7 @@ pipeline {
                 dir('traductor_usql/src') {
                     echo 'Building USQL...'
                     bat 'python3 -m pydoc -w traductor'
-                    bat 'ls -l'
+                    bat 'dir' // Reemplazar 'ls -l' con 'dir'
                 }    
             }
         }
@@ -31,18 +31,17 @@ pipeline {
                     bat 'javac Main.java'
                     bat 'java Main'
                     bat 'javadoc -d docs Main.java'
-                    bat 'ls -l'
+                    bat 'dir' // Reemplazar 'ls -l' con 'dir'
                 }
             }
         }
 
         stage('Archive') {
             steps {
-                // Archivar el archivo trivia.html como artefacto
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'trivia/src/trivia.html'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'traductor_usql/src/traductor.html'
-                archiveArtifacts allowEmptyArchive: true, artifacts: 'sistema_pedidos/src/docs/Main.html'
-                archiveArtifacts allowEmptyArchive: true, artifacts: 'sistema_pedidos/src/docs/*'
+                archiveArtifacts allowEmptyArchive: true, artifacts: 'sistema_pedidos/main/java/classes/docs/Main.html'
+                archiveArtifacts allowEmptyArchive: true, artifacts: 'sistema_pedidos/main/java/classes/docs/*'
             }
         }
         
