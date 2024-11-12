@@ -8,7 +8,7 @@ pipeline {
                 dir('trivia/src') {
                     echo 'Building trivia...'
                     bat 'python3 -m pydoc -w trivia'
-                    bat 'dir' // Reemplazar 'ls -l' con 'dir'
+                    bat 'dir'
                 }    
             }
         }
@@ -18,7 +18,7 @@ pipeline {
                 dir('traductor_usql/src') {
                     echo 'Building USQL...'
                     bat 'python3 -m pydoc -w traductor'
-                    bat 'dir' // Reemplazar 'ls -l' con 'dir'
+                    bat 'dir'
                 }    
             }
         }
@@ -26,12 +26,12 @@ pipeline {
         stage('Correr Pedidos - Java') {
             steps {
                 echo 'Building...'
-                dir('sistema_pedidos/main/java/classes') {
+                dir('sistema_pedidos/src/main/java/classes') {
                     bat 'javac Order.java OrderProcessing.java Packaging.java Payment.java Shipping.java'
                     bat 'javac Main.java'
                     bat 'java Main'
                     bat 'javadoc -d docs Main.java'
-                    bat 'dir' // Reemplazar 'ls -l' con 'dir'
+                    bat 'dir'
                 }
             }
         }
