@@ -16,7 +16,8 @@ pipeline {
         
         stage('PyDoc Traductor USQL') {
             steps {
-                    sh 'cd traductor_usql/src && python3 -m pydoc -w traductor'
+                    sh 'cd traductor_usql/src'
+                    sh 'python3 -m pydoc -w traductor'
                     sh 'ls -l'
                 }
             }
