@@ -11,25 +11,55 @@
             flex-direction: column;
             align-items: center;
             padding: 50px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        /* body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0;
+            padding: 0 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        } */
+        h1, h3 {
+            margin-top: 50px;
+            margin: 5px 0;
+            text-align: center;
+        }
+        p{
+            padding: 20px 0;
         }
         button {
+            width: 320px;
             margin: 10px;
-            padding: 10px 20px;
+            padding: 15px;
             font-size: 16px;
             cursor: pointer;
             border: none;
             border-radius: 5px;
             color: #fff;
+            transition: background-color 0.3s ease;
         }
-        .javadoc-btn { background-color: #4CAF50; }
-        .pydoc-btn { background-color: #2196F3; }
-        .test-btn { background-color: #f44336; }
+        .pydoc-btn, .javadoc-btn {
+            background-color: #2196F3;
+        }
+        .test-btn {
+            background-color: #f44336;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
 
     <h1>Proyecto final integrado</h1>
-    <h2>Camila Berreta y María Paz Díaz</h2>
+    <h3>Camila Berreta y María Paz Díaz</h3>
     <p>Seleccione una opción para generar su documentación:</p>
 
     <!-- Botón para ejecutar Javadoc en Sistema Pedidos -->
