@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Ajustar permisos') {
-            steps {
-                sh 'chmod -R u+w traductor_usql sistema_pedidos trivia'
-            }
-        }
-
         stage('Correr Trivia - Python') {
             steps {
                 dir('trivia/src') {
