@@ -25,12 +25,14 @@ pipeline {
 
         stage('Correr Pedidos - Java') {
             echo 'Building sistema pedidos...'
-            dir('sistema_pedidos/src/main/java') {
-                // Compilar los archivos Java en `classes`
-                bat 'javac -d . classes/*.java'
-                // Ejecutar la clase `Main` con el nombre de paquete completo
-                bat 'java classes.Main'
-        }
+            steps {
+                dir('sistema_pedidos/src/main/java') {
+                    // Compilar los archivos Java en `classes`
+                    bat 'javac -d . classes/*.java'
+                    // Ejecutar la clase `Main` con el nombre de paquete completo
+                    bat 'java classes.Main'
+                }
+            }
 }
 
 
