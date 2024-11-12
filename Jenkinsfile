@@ -30,7 +30,7 @@ pipeline {
                     // Compilar los archivos Java en `classes`
                     bat 'javac -d . classes/*.java'
                     // Crear documentación Javadoc en la carpeta `docs`
-                    bat 'javadoc -d docs classes/*.java'
+                    bat 'javadoc -d docs classes/Main.java'
                     // Ejecutar la clase `Main` con el nombre de paquete completo
                     bat 'java classes.Main'
                 }
