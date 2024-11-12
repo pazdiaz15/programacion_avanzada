@@ -13,7 +13,7 @@ pipeline {
             }
         }
 
-         stage('Correr USQL - Python') {
+        stage('Correr USQL - Python') {
             steps {
                 dir('traductor_usql/src') {
                     echo 'Building traductor USQL...'
@@ -24,8 +24,8 @@ pipeline {
         }
 
         stage('Correr Pedidos - Java') {
-            echo 'Building sistema pedidos...'
             steps {
+                echo 'Building sistema pedidos...'
                 dir('sistema_pedidos/src/main/java') {
                     // Compilar los archivos Java en `classes`
                     bat 'javac -d . classes/*.java'
@@ -33,8 +33,7 @@ pipeline {
                     bat 'java classes.Main'
                 }
             }
-}
-
+        }
 
         stage('Archive') {
             steps {
@@ -47,3 +46,4 @@ pipeline {
         
     }
 }
+
