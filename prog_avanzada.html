@@ -33,19 +33,19 @@
     <p>Seleccione una opción para generar su documentación:</p>
 
     <!-- Botón para ejecutar Javadoc en Sistema Pedidos -->
-    <button class="javadoc-btn" onclick="runPipeline('http://localhost:8080/job/obligPA/job/main/${build.number}/artifact/sistema_pedidos/src/java/docs/Main.html')">
+    <!-- <button class="javadoc-btn" onclick="runPipeline('http://localhost:8080/job/obligPA/job/main/${build.number}/artifact/sistema_pedidos/src/java/docs/Main.html')">
         Generar Javadoc para Sistema Pedidos
-    </button>
+    </button> -->
 
     <!-- Botón para ejecutar PyDoc en Traductor USQL -->
-    <button class="pydoc-btn" onclick="runPipeline('http://localhost:8080/job/obligPA/job/main/${build.number}/artifact/traductor_usql/src/main.html')">
+    <button class="pydoc-btn" onclick="runPipeline('http://localhost:8080/job/obligPA/job/main/${build.number}/artifact/traductor_usql/src/traductor.html')">
         Generar PyDoc para Traductor USQL
     </button>
 
     <!-- Botón para ejecutar PyDoc en Trivia -->
-    <button class="pydoc-btn" onclick="runPipeline('http://localhost:8085/job/proyecto_final/job/main/${build.number}/artifact/trivia/src/trivia.html')">
+    <!-- <button class="pydoc-btn" onclick="runPipeline('http://localhost:8085/job/proyecto_final/job/main/${build.number}/artifact/trivia/src/trivia.html')">
         Generar PyDoc para Trivia
-    </button>
+    </button> -->
 
     <script>
         function runPipeline(url) {

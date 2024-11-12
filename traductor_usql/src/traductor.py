@@ -283,25 +283,25 @@ def p_error(p):
         raise SyntaxError("Syntax error: unexpected end of input")
 
 
-parser = yacc.yacc()
+# parser = yacc.yacc()
 
-# Definición de tokens y reglas de parsing aquí (como ya los tienes definidos)
+# # Definición de tokens y reglas de parsing aquí (como ya los tienes definidos)
 
-# Clase TraductorUSQL
-class TraductorUSQL:
-    def __init__(self):
-        # Inicializar lexer y parser
-        self.lexer = lex.lex()
-        self.parser = yacc.yacc()
+# # Clase TraductorUSQL
+# class TraductorUSQL:
+#     def __init__(self):
+#         # Inicializar lexer y parser
+#         self.lexer = lex.lex()
+#         self.parser = yacc.yacc()
     
-    def parse(self, consulta):
-        try:
-            # Usar el parser para traducir USQL a SQL
-            sql = self.parser.parse(consulta, lexer=self.lexer)
-            return sql
-        except SyntaxError as e:
-            print(f"Error de sintaxis: {e}")
-            return None
+#     def parse(self, consulta):
+#         try:
+#             # Usar el parser para traducir USQL a SQL
+#             sql = self.parser.parse(consulta, lexer=self.lexer)
+#             return sql
+#         except SyntaxError as e:
+#             print(f"Error de sintaxis: {e}")
+#             return None
 
 
 # Prueba
