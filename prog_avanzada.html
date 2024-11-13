@@ -14,24 +14,12 @@
             background-color: #f9f9f9;
             color: #333;
         }
-        /* body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; 
-            margin: 0;
-            padding: 0 20px;
-            background-color: #f9f9f9;
-            color: #333;
-        } */
         h1, h3 {
             margin-top: 50px;
             margin: 5px 0;
             text-align: center;
         }
-        p{
+        p {
             padding: 20px 0;
         }
         button {
@@ -61,43 +49,55 @@
     <h1>Proyecto final integrado</h1>
     <h3>Camila Berreta y María Paz Díaz</h3>
     <p>Seleccione una opción para generar su documentación:</p>
-
-    <!-- Botón para ejecutar Javadoc en Sistema Pedidos -->
-    <button class="javadoc-btn" onclick="runPipeline('')">
-        Generar Javadoc para Sistema Pedidos
-    </button>
-
-    <!-- Botón para ejecutar PyDoc en Traductor USQL -->
-    <button class="pydoc-btn" onclick="runPipeline('http://localhost:8085/job/work-test/${build.number}/artifact/traductor_usql/src/traductor.html')">
-        Generar PyDoc para Traductor USQL
-    </button>
-
-    <!-- Botón para ejecutar PyDoc en Trivia -->
-    <button class="pydoc-btn" onclick="runPipeline('http://localhost:8085/job/work-test/${build.number}/artifact/trivia/src/trivia.html')">
-        Generar PyDoc para Trivia
-    </button>
+    <div id="builds-container"></div> <!-- Contenedor para los builds -->
 
     <script>
-        function runPipeline(url) {
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'Basic ' + btoa('camib:11faf76f5964ba9581574f82647a3e2bd0')  
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Pipeline ejecutado correctamente');
-                } else {
-                    alert('Error al ejecutar el pipeline');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Error de conexión al ejecutar el pipeline');
-            });
-        }
-    </script>
+        const jenkinsApiUrl = 'http://localhost:3001/jenkins/builds';
+        
+        const username = 'camib';
+        const apiToken = '112a10c0315893eb0af25d88054e43d50e';
+        
+        async function obtenerBuilds() {
+            try {
+                const response = await fetch(jenkinsApiUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Basic ' + btoa(username + ':' + apiToken)
+                    }
+                });
 
+                if (!response.ok) throw new Error('Error al obtener los datos de Jenkins');
+
+                const data = await response.json();
+                const buildsContainer = document.getElementById('builds-container');
+                buildsContainer.innerHTML = ''; // Limpia el contenedor
+
+                data.builds.forEach(build => {
+                    const buildDiv = document.createElement('div');
+                    buildDiv.className = 'build';
+                    buildDiv.innerHTML = `<h3>Último build: #${build.number}</h3>`;
+                    
+                    const stages = [
+                        { name: 'Pydoc Trivia', url: `http://localhost:8085/job/work-test/${build.number}/artifact/trivia/src/trivia.html` },
+                        { name: 'Pydoc USQL', url: `http://localhost:8085/job/work-test/${build.number}/artifact/traductor_usql/src/traductor.html` },
+                        { name: 'Javadoc Pedidos', url: `http://localhost:8080/job/obligPA/job/main/${build.number}/artifact/pedidos/docs/Main.html` }
+                    ];
+
+                    stages.forEach(stage => {
+                        const button = document.createElement('button');
+                        button.textContent = `${stage.name}`;
+                        button.onclick = () => window.open(`${stage.url}`, '_blank');
+                        buildDiv.appendChild(button);
+                    });
+
+                    buildsContainer.appendChild(buildDiv);
+                });
+            } catch (error) {
+                console.error('Error al obtener los builds:', error);
+            }
+        }
+
+        obtenerBuilds();
+    </script>
 </body>
 </html>

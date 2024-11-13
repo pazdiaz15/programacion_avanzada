@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DESKTOP_PATH = 'C:\Users\camib\Desktop'
+    }
+
     stages {
 
         stage('Correr Trivia - Python') {
@@ -42,7 +46,13 @@ pipeline {
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'trivia/src/trivia.html'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'traductor_usql/src/traductor.html'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'sistema_pedidos/src/main/java/docs/*'
+
+                bat "copy trivia/src/trivia.html ${DESKTOP_PATH}\\trivia.html"
+                bat "copy traductor_usql/src/traductor.html ${DESKTOP_PATH}\\traductor.html"
+                bat "xcopy sistema_pedidos/src/main/java/docs ${DESKTOP_PATH}\\docs /E /I"
             }
+
+            
         }
         
     }
