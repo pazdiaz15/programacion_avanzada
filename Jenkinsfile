@@ -12,7 +12,7 @@ pipeline {
                 dir('trivia/src') {
                     echo 'Building trivia...'
                     bat 'python3 -m pydoc -w trivia'
-                    bat 'dir'
+                    bat 'dir' // Verifica que trivia.html se genera
                 }    
             }
         }
@@ -22,7 +22,7 @@ pipeline {
                 dir('traductor_usql/src') {
                     echo 'Building traductor USQL...'
                     bat 'python3 -m pydoc -w traductor'
-                    bat 'dir'
+                    bat 'dir' // Verifica que traductor.html se genera
                 }    
             }
         }
@@ -31,30 +31,27 @@ pipeline {
             steps {
                 echo 'Building sistema pedidos...'
                 dir('sistema_pedidos/src/main/java') {
-                    // Compilar los archivos Java en `classes`
                     bat 'javac -d . classes/*.java'
-                    // Crear documentación Javadoc en la carpeta `docs`
                     bat 'javadoc -d docs classes/Main.java'
-                    // Ejecutar la clase `Main` con el nombre de paquete completo
-                    bat 'java classes.Main'
+                    bat 'dir docs' // Verifica que la carpeta docs se genera correctamente
                 }
             }
         }
 
         stage('Archive') {
             steps {
+                // Archivar en Jenkins
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'trivia/src/trivia.html'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'traductor_usql/src/traductor.html'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'sistema_pedidos/src/main/java/docs/*'
-        
-                // Copiar los archivos al escritorio
-                bat 'copy "trivia/src/trivia.html" "C:\\Users\\camib\\Desktop\\trivia.html"'
-                bat 'copy "traductor_usql/src/traductor.html" "C:\\Users\\camib\\Desktop\\traductor.html"'
-                bat 'xcopy "sistema_pedidos/src/main/java/docs" "C:\\Users\\camib\\Desktop\\docs" /E /I'
+
+                // Copiar archivos al escritorio, verificando si existen
+                bat 'if exist "trivia/src/trivia.html" copy "trivia/src/trivia.html" "%DESKTOP_PATH%\\trivia.html"'
+                bat 'if exist "traductor_usql/src/traductor.html" copy "traductor_usql/src/traductor.html" "%DESKTOP_PATH%\\traductor.html"'
+                bat 'if exist "sistema_pedidos/src/main/java/docs" xcopy "sistema_pedidos/src/main/java/docs" "%DESKTOP_PATH%\\docs" /E /I'
             }
         }
-
-        
     }
 }
+
 
