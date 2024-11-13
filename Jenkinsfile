@@ -7,6 +7,15 @@ pipeline {
 
     stages {
 
+        stage('List Workspace Contents') {
+            steps {
+                dir('.') {
+                    bat 'dir /S'  // Listar toda la estructura del directorio
+                }
+            }
+        }
+
+
         stage('Correr Trivia - Python') {
             steps {
                 dir('trivia/src') {
