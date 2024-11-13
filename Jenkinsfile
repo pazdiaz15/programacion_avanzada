@@ -46,14 +46,14 @@ pipeline {
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'trivia/src/trivia.html'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'traductor_usql/src/traductor.html'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'sistema_pedidos/src/main/java/docs/*'
-
-                bat "copy trivia/src/trivia.html ${DESKTOP_PATH}\\trivia.html"
-                bat "copy traductor_usql/src/traductor.html ${DESKTOP_PATH}\\traductor.html"
-                bat "xcopy sistema_pedidos/src/main/java/docs ${DESKTOP_PATH}\\docs /E /I"
+        
+                // Copiar los archivos al escritorio
+                bat 'copy "trivia/src/trivia.html" "C:\\Users\\camib\\Desktop\\trivia.html"'
+                bat 'copy "traductor_usql/src/traductor.html" "C:\\Users\\camib\\Desktop\\traductor.html"'
+                bat 'xcopy "sistema_pedidos/src/main/java/docs" "C:\\Users\\camib\\Desktop\\docs" /E /I'
             }
-
-            
         }
+
         
     }
 }
