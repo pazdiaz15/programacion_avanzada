@@ -49,55 +49,10 @@
     <h1>Proyecto final integrado</h1>
     <h3>Camila Berreta y María Paz Díaz</h3>
     <p>Seleccione una opción para generar su documentación:</p>
-    <div id="builds-container"></div> <!-- Contenedor para los builds -->
-
-    <script>
-        const jenkinsApiUrl = 'http://localhost:3001/jenkins/builds';
-        
-        const username = 'camib';
-        const apiToken = '112a10c0315893eb0af25d88054e43d50e';
-        
-        async function obtenerBuilds() {
-            try {
-                const response = await fetch(jenkinsApiUrl, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': 'Basic ' + btoa(username + ':' + apiToken)
-                    }
-                });
-
-                if (!response.ok) throw new Error('Error al obtener los datos de Jenkins');
-
-                const data = await response.json();
-                const buildsContainer = document.getElementById('builds-container');
-                buildsContainer.innerHTML = ''; // Limpia el contenedor
-
-                data.builds.forEach(build => {
-                    const buildDiv = document.createElement('div');
-                    buildDiv.className = 'build';
-                    buildDiv.innerHTML = `<h3>Último build: #${build.number}</h3>`;
-                    
-                    const stages = [
-                        { name: 'Pydoc Trivia', url: `http://localhost:8085/job/work-test/${build.number}/artifact/trivia/src/trivia.html` },
-                        { name: 'Pydoc USQL', url: `http://localhost:8085/job/work-test/${build.number}/artifact/traductor_usql/src/traductor.html` },
-                        { name: 'Javadoc Pedidos', url: `http://localhost:8080/job/obligPA/job/main/${build.number}/artifact/pedidos/docs/Main.html` }
-                    ];
-
-                    stages.forEach(stage => {
-                        const button = document.createElement('button');
-                        button.textContent = `${stage.name}`;
-                        button.onclick = () => window.open(`${stage.url}`, '_blank');
-                        buildDiv.appendChild(button);
-                    });
-
-                    buildsContainer.appendChild(buildDiv);
-                });
-            } catch (error) {
-                console.error('Error al obtener los builds:', error);
-            }
-        }
-
-        obtenerBuilds();
-    </script>
+    <div class="container">
+        <button onclick="window.open('file:///C:/Users/camib/Desktop/trivia.html', '_blank')" class="pydoc-btn">Abrir Trivia</button>
+        <button onclick="window.open('file:///C:/Users/camib/Desktop/traductor.html', '_blank')" class="pydoc-btn">Abrir Traductor USQL</button>
+        <button onclick="window.open('file:///C:/Users/camib/Desktop/docs/classes/Main.html', '_blank')" class="javadoc-btn">Abrir Documentación Pedidos</button>
+    </div>
 </body>
 </html>
