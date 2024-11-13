@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DESKTOP_PATH = 'C:\Users\camib\Desktop'
+        DESKTOP_PATH = 'C:\\Users\\camib\\Desktop'
     }
 
     stages {
